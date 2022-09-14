@@ -12,9 +12,9 @@ namespace parse {
 void RunOpenLexerTests(TestRunner& tr);
 }  // namespace parse
 
-namespace ast {
-void RunUnitTests(TestRunner& tr);
-}
+//namespace ast {
+//void RunUnitTests(TestRunner& tr);
+//}
 namespace runtime {
 void RunObjectHolderTests(TestRunner& tr);
 void RunObjectsTests(TestRunner& tr);
@@ -116,7 +116,7 @@ void TestAll() {
     parse::RunOpenLexerTests(tr);
     runtime::RunObjectHolderTests(tr);
     runtime::RunObjectsTests(tr);
-    ast::RunUnitTests(tr);
+    //ast::RunUnitTests(tr);
     TestParseProgram(tr);
 
     RUN_TEST(tr, TestSimplePrints);

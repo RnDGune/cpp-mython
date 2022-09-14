@@ -10,19 +10,19 @@
 #include <vector>
 
 namespace TestRunnerPrivate {
-template <class Map>
-std::ostream& PrintMap(std::ostream& os, const Map& m) {
-    os << "{";
-    bool first = true;
-    for (const auto& kv : m) {
-        if (!first) {
-            os << ", ";
+    template <class Map>
+    std::ostream& PrintMap(std::ostream& os, const Map& m) {
+        os << "{";
+        bool first = true;
+        for (const auto& kv : m) {
+            if (!first) {
+                os << ", ";
+            }
+            first = false;
+            os << kv.first << ": " << kv.second;
         }
-        first = false;
-        os << kv.first << ": " << kv.second;
+        return os << "}";
     }
-    return os << "}";
-}
 }  // namespace TestRunnerPrivate
 
 template <class T>
@@ -86,10 +86,12 @@ public:
         try {
             func();
             std::cerr << test_name << " OK" << std::endl;
-        } catch (std::exception& e) {
+        }
+        catch (std::exception& e) {
             ++fail_count;
             std::cerr << test_name << " fail: " << e.what() << std::endl;
-        } catch (...) {
+        }
+        catch (...) {
             ++fail_count;
             std::cerr << "Unknown exception caught" << std::endl;
         }
